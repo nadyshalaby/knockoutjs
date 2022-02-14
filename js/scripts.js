@@ -1,6 +1,9 @@
 let ViewModel = function (items) {
     this.items = ko.observableArray(items);
     this.itemToAdd = ko.observable("");
+    this.isButtonEnabled = ko.computed(function () {
+        return this.itemToAdd().length > 0;
+    }, this);
     this.addItem = function () {
         this.items.push(this.itemToAdd());
         this.itemToAdd("");
