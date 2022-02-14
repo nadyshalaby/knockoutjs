@@ -1,27 +1,36 @@
 let ViewModel = function () {
-    this.styleToggle = ko.observable(false);
-    this.toggleStyle = function () {
-        this.styleToggle(!this.styleToggle());
-    }.bind(this);
-
-    this.cssToggle = ko.observable(false);
-    this.toggleCss = function () {
-        this.cssToggle(!this.cssToggle());
-    }.bind(this);
-
-    this.classToggle = ko.observable(false);
-    this.toggleClass = function () {
-        this.classToggle(!this.classToggle());
-    }.bind(this);
-
-    this.attrToggle = ko.observable(false);
-    this.toggleAttr = function () {
-        this.attrToggle(!this.attrToggle());
-    }.bind(this);
-
-    this.attrValue = ko.computed(function () {
-        return this.attrToggle() ? "Attr toggle is on" : "Attr toggle is off";
-    }, this);
+    this.items = ko.observableArray([
+        {
+            name: "Item 1",
+            description: "This is the first item",
+            price: "$1.00",
+            attributes: {
+                color: "red",
+                size: "small",
+                materials: ["leather", "wood", "plastic"],
+            },
+        },
+        {
+            name: "Item 2",
+            description: "This is the second item",
+            price: "$2.00",
+            attributes: {
+                color: "blue",
+                size: "medium",
+                materials: ["cotton", "wood", "plastic"],
+            },
+        },
+        {
+            name: "Item 3",
+            description: "This is the third item",
+            price: "$3.00",
+            attributes: {
+                color: "green",
+                size: "large",
+                materials: ["cotton", "silk", "leather", "wood", "plastic"],
+            },
+        },
+    ]);
 };
 
 ko.applyBindings(ViewModel);

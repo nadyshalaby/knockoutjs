@@ -14,45 +14,50 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <!-- Built-in Bindings -->
         <!-- 
-            style: object
-            css: object
-            class: string
-            attr: object
-            visible: boolean
-            hidden: boolean
-            text: string
-            html: string
-            enable: boolean
-            disable: boolean
-            checked: boolean
-            value: string
-            click: function
-            submit: function
-            valueUpdate: enum('afterkeypress', 'keyup', 'keypress', 'input')
-            options: array
-            optionsCaption: string
-            textInput: observable
+            foreach: 
+                - iterate through an array
+                - iterate through an object
+                - iterate through a DOM node list
+                - Helpers:
+                    - $index()
+                    - $data
+                    - $parent
+                    - $parents
+                    - $root
+                    - $context
+            if
+            ifnot
+            with
+
          -->
         <div class="container">
-            <a href="#" data-bind="click: toggleStyle">Click me:</a>
-            <span data-bind="style: {color: styleToggle()? 'red': 'green'}"
-                >This is span to demonstrate style binding</span
-            >
-            <hr />
-            <a href="#" data-bind="click: toggleCss">Click me:</a>
-            <span data-bind="css: {'red': cssToggle(), 'green': !cssToggle()}"
-                >This is span to demonstrate css binding</span
-            >
-            <hr />
-            <a href="#" data-bind="click: toggleClass">Click me:</a>
-            <span? data-bind="class: classToggle()? 'red': 'green'"
-                >This is span to demonstrate class binding</span>
-            <hr />
-            <a href="#" data-bind="click: toggleAttr">Click me:</a>
-            <span data-bind="attr: {'title': attrValue()}"
-                >This is span to demonstrate attr binding</span>
+            <ul>
+                <!-- ko foreach: items -->
+                <li data-bind="text: name"></li>
+                <li data-bind="text: description"></li>
+                <li data-bind="text: price"></li>
+                <li>
+                    <ul>
+                        <!-- ko with: attributes -->
+                        <li data-bind="text: color"></li>
+                        <li data-bind="text: size"></li>
+                        <li>
+                            <b data-bind="if: size == 'large'">LARGE</b>
+                            <span data-bind="ifnot: color == 'red', style: {color: color}">GREEN</span>
+                        </li>
+                        <li>
+                            <ul>
+                                <!-- ko foreach: materials -->
+                                <li data-bind="text: $data"></li>
+                                <!-- /ko -->
+                            </ul>
+                        </li>
+                        <!-- /ko -->
+                    </ul>
+                </li>
+                <!-- /ko -->
+            </ul>
         </div>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
