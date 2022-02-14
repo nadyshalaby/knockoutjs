@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Knockout.js</title>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css"
+            integrity="sha512-GQGU0fMMi238uA+a/bdWJfpUGKUkBdgfFdgBm72SUQ6BeyWjoY/ton0tEjH+OSH9iP4Dfh+7HM0I9f5eR0L/4w=="
+            crossorigin="anonymous"
+        />
+    </head>
+    <body>
+        <!-- Create table to display values -->
+        <div class="container">
+            <!-- Page jumptron -->
+            <div class="jumbotron">
+                <h1 class="display-4">Knockout.js</h1>
+                <p class="lead">A simple example of Knockout.js</p>
+                <a
+                    class="btn btn-primary btn-lg"
+                    href="https://knockoutjs.com/"
+                    target="_blank"
+                    role="button"
+                    >Learn more</a
+                >
+                <hr class="my-4" />
+            </div>
+
+            <table class="table table-bordered table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Address</th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: people">
+                    <tr>
+                        <td data-bind="text: name"></td>
+                        <td data-bind="text: age"></td>
+                        <td data-bind="text: email"></td>
+                        <td data-bind="text: phone"></td>
+                        <td data-bind="text: address"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
+        <script src="js/scripts.js"></script>
+    </body>
+</html>
