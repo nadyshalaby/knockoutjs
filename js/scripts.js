@@ -1,19 +1,27 @@
-let ViewModel = function (items) {
-    this.items = ko.observableArray(items);
-    this.itemToAdd = ko.observable("");
-    this.addItem = function () {
-        this.items.push(this.itemToAdd());
-        this.itemToAdd("");
+let ViewModel = function () {
+    this.styleToggle = ko.observable(false);
+    this.toggleStyle = function () {
+        this.styleToggle(!this.styleToggle());
     }.bind(this);
+
+    this.cssToggle = ko.observable(false);
+    this.toggleCss = function () {
+        this.cssToggle(!this.cssToggle());
+    }.bind(this);
+
+    this.classToggle = ko.observable(false);
+    this.toggleClass = function () {
+        this.classToggle(!this.classToggle());
+    }.bind(this);
+
+    this.attrToggle = ko.observable(false);
+    this.toggleAttr = function () {
+        this.attrToggle(!this.attrToggle());
+    }.bind(this);
+
+    this.attrValue = ko.computed(function () {
+        return this.attrToggle() ? "Attr toggle is on" : "Attr toggle is off";
+    }, this);
 };
 
-ko.applyBindings(
-    new ViewModel([
-        "Introduction to JavaScript",
-        "Introduction to HTML and CSS",
-        "Introduction to jQuery",
-        "Introduction to Knockout.js",
-        "Introduction to Angular.js",
-        "Introduction to Node.js",
-    ])
-);
+ko.applyBindings(ViewModel);

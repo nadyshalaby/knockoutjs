@@ -11,32 +11,48 @@
             integrity="sha512-GQGU0fMMi238uA+a/bdWJfpUGKUkBdgfFdgBm72SUQ6BeyWjoY/ton0tEjH+OSH9iP4Dfh+7HM0I9f5eR0L/4w=="
             crossorigin="anonymous"
         />
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <!-- Create table to display values -->
+        <!-- Built-in Bindings -->
+        <!-- 
+            style: object
+            css: object
+            class: string
+            attr: object
+            visible: boolean
+            hidden: boolean
+            text: string
+            html: string
+            enable: boolean
+            disable: boolean
+            checked: boolean
+            value: string
+            click: function
+            submit: function
+            valueUpdate: enum('afterkeypress', 'keyup', 'keypress', 'input')
+            options: array
+            optionsCaption: string
+            textInput: observable
+         -->
         <div class="container">
-            <form data-bind="submit: addItem">
-                <div class="form-group">
-                    <label for="itemToAdd">Add a new item: </label>
-                    <input
-                        id="itemToAdd"
-                        type="text"
-                        class="form-control"
-                        data-bind="value: itemToAdd, valueUpdate: 'afterkeydown'"
-                    />
-                </div>
-                <div class="form-group mt-2">
-                    <button type="submit" class="btn btn-primary">Add Item</button>
-                </div>
-                <div class="form-group mt-2">
-                    <label>Languages</label>
-                    <select
-                        multiple
-                        data-bind="options: items, optionsCaption: 'Select a language...'"
-                        class="form-control"
-                    ></select>
-                </div>
-            </form>
+            <a href="#" data-bind="click: toggleStyle">Click me:</a>
+            <span data-bind="style: {color: styleToggle()? 'red': 'green'}"
+                >This is span to demonstrate style binding</span
+            >
+            <hr />
+            <a href="#" data-bind="click: toggleCss">Click me:</a>
+            <span data-bind="css: {'red': cssToggle(), 'green': !cssToggle()}"
+                >This is span to demonstrate css binding</span
+            >
+            <hr />
+            <a href="#" data-bind="click: toggleClass">Click me:</a>
+            <span? data-bind="class: classToggle()? 'red': 'green'"
+                >This is span to demonstrate class binding</span>
+            <hr />
+            <a href="#" data-bind="click: toggleAttr">Click me:</a>
+            <span data-bind="attr: {'title': attrValue()}"
+                >This is span to demonstrate attr binding</span>
         </div>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
