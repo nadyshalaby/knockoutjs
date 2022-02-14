@@ -15,85 +15,28 @@
     <body>
         <!-- Create table to display values -->
         <div class="container">
-            <!-- Page jumptron -->
-            <div class="jumbotron">
-                <h1 class="display-4">Knockout.js</h1>
-                <p class="lead">A simple example of Knockout.js</p>
-                <a
-                    class="btn btn-primary btn-lg"
-                    href="https://knockoutjs.com/"
-                    target="_blank"
-                    role="button"
-                    >Learn more</a
-                >
-                <hr class="my-4" />
-            </div>
-            <!-- Create vertical form to display values -->
-            <form>
+            <form data-bind="submit: addItem">
                 <div class="form-group">
-                    <label for="firstName">First Name</label>
+                    <label for="itemToAdd">Add a new item: </label>
                     <input
+                        id="itemToAdd"
                         type="text"
                         class="form-control"
-                        id="firstName"
-                        placeholder="Enter first name"
-                        data-bind="value: firstname"
+                        data-bind="value: itemToAdd, valueUpdate: 'afterkeydown'"
                     />
                 </div>
-                <div class="form-group">
-                    <label for="lastName">Last Name</label>
-                    <input
-                        type="text"
+                <div class="form-group mt-2">
+                    <button type="submit" class="btn btn-primary">Add Item</button>
+                </div>
+                <div class="form-group mt-2">
+                    <label>Languages</label>
+                    <select
+                        multiple
+                        data-bind="options: items, optionsCaption: 'Select a language...'"
                         class="form-control"
-                        id="lastName"
-                        placeholder="Enter last name"
-                        data-bind="value: lastname"
-                    />
+                    ></select>
                 </div>
-                <div class="form-group">
-                    <label for="lastName">Full Name</label>
-                    <input
-                        type="text"
-                        class="form-control"
-                        id="fullname"
-                        placeholder="Enter last name"
-                        data-bind="value: fullname"
-                    />
-                </div>
-                <div class="form-group">
-                    <label for="age">Age</label>
-                    <input
-                        type="number"
-                        class="form-control"
-                        id="age"
-                        placeholder="Enter age"
-                        data-bind="value: age"
-                    />
-                </div>
-
-                <table class="table table-bordered table-hover mt-3">
-                    <thead>
-                        <tr>
-                            <th>Age</th>
-                            <th>Age in dog years</th>
-                            <th>Is Adult</th>
-                            <th>Is Senior</th>
-                            <th>Is Child</th>
-                            <th>Is Baby</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td data-bind="text: age"></td>
-                            <td data-bind="text: ageInDogYears"></td>
-                            <td data-bind="text: isAdult"></td>
-                            <td data-bind="text: isSenior"></td>
-                            <td data-bind="text: isChild"></td>
-                            <td data-bind="text: isBaby"></td>
-                        </tr>
-                    </tbody>
-                </table>
-
+            </form>
         </div>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
